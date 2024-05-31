@@ -4,8 +4,29 @@ project(planning)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-aux_source_directory(. SRC_LISTS)
+# dynamic lib
+aux_source_directory(${PROJECT_SOURCE_DIR}/src SRC_LISTS)
+add_library(common
+SHARED
+${SRC_LISTS}
+)
 
-add_executable(palnning_main ${SRC_LISTS})
+target_include_directories(common 
+PUBLIC 
+${PROJECT_SOURCE_DIR}/include
+)
+
+# exe file
+add_executable(planning_main planning_main.cpp)
+
+target_include_directories(planning_main
+PUBLIC 
+${PROJECT_SOURCE_DIR}/include
+)
+
+target_link_libraries(planning_main
+PUBLIC
+common
+)
