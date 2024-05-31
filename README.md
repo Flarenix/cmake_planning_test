@@ -1,3 +1,2 @@
 # cmake_planning_test
-
-It's just a start~
+与心爱的你行至世界尽头
