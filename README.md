@@ -1,2 +1,3 @@
 # cmake_planning_test
-cmake planning project learning
+
+It's just a start~
